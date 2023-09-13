@@ -1,0 +1,71 @@
+<form [formGroup]="currencyForm">
+  <div class="control mt-4">
+    <label class="pr-3 has-text-weight-bold"> Pay Method </label>
+    <label class="radio has-text-weight-bold has-text-grey">
+      <input type="radio" formControlName="payMethod" [value]="'instant'" />
+      Instant
+    </label>
+    <label class="radio has-text-weight-bold has-text-grey">
+      <input type="radio" formControlName="payMethod" [value]="'regular'" />
+      Regular
+    </label>
+  </div>
+
+  <div class="columns mt-4">
+    <div class="column is-one-quarter">
+      <label class="has-text-weight-bold"> Amount </label>
+      <div>
+        <input type="number" formControlName="inputAmount" />
+        <div
+          *ngIf="currencyForm.get('inputAmount')?.errors"
+          class="has-text-danger"
+        >
+          Min 10 , Max 20,000
+        </div>
+      </div>
+    </div>
+
+    <div class="column is-one-quarter">
+      <label class="has-text-weight-bold"> Currency </label>
+      <div>
+        <div class="select">
+          <select>
+            <option></option>
+            <option>USD</option>
+            <option>EUR</option>
+            <option>CAD</option>
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <div class="column is-one-quarter">
+      <label class="has-text-weight-bold">Converted Amount </label>
+      <div>
+        <input type="text" />
+        <label>BDT</label>
+      </div>
+    </div>
+  </div>
+
+  <button
+    class="button is-success is-focused has-text-weight-bold"
+    (click)="showScore()"
+  >
+    Send
+  </button>
+
+  <section class="card mt-6 has-text-weight-bold" *ngIf="displayResult">
+    <p>Fee is: {{ getSalutation() }}</p>
+  </section>
+  <!-- <section *ngIf="isScoreDisplayed" class="mt-12">
+    <p>
+      Dear {{ getSalutation() }}
+      {{ bmiForm.get('firstName')?.value + ' ' + bmiForm.get('lastName')?.value }},
+      Your BMI is {{ bmi | number }}. Your weight range is {{ weightRange }}.
+    </p>
+    <p>
+      A copy of the result will be sent to your email {{ bmiForm.get('email')?.value }}.
+    </p>
+  </section> -->
+</form>

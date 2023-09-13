@@ -1,0 +1,25 @@
+<form
+  class="container box mt-6 has-background-light"
+  [formGroup]="transferForm"
+>
+  <div>
+    <div>
+      <label class="has-text-weight-bold"> Receiver Debit Card Number </label>
+    </div>
+    <input class type="text" formControlName="cardNumber" />
+  </div>
+  <div>
+    <div class="mt-4">
+      <div>
+        <label class="has-text-weight-bold">Email</label>
+      </div>
+      <input class type="text" formControlName="email" />
+      <div>
+        <span *ngIf="emailErrors?.['email']" class="pt-2 has-text-danger">
+          Please enter a valid email.
+        </span>
+      </div>
+    </div>
+  </div>
+  <app-currency></app-currency>
+</form>
