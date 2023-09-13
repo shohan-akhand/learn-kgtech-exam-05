@@ -30,11 +30,12 @@
       <div>
         <div class="select">
           <select>
-            <option></option>
+            <option formControlName="select"></option>
             <option>USD</option>
             <option>EUR</option>
             <option>CAD</option>
           </select>
+          <div *ngIf="currencyForm.get('select')?.errors"></div>
         </div>
       </div>
     </div>

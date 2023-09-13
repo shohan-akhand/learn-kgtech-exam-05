@@ -21,6 +21,7 @@ export class CurrencyComponent {
       Validators.max(20000),
       Validators.min(10),
     ]),
+    select: new FormControl('', [Validators.required]),
   });
   showScore(): void {
     this.displayResult = true;

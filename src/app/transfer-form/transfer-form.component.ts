@@ -12,10 +12,37 @@ import {
   styleUrls: ['./transfer-form.component.css'],
 })
 export class TransferFormComponent {
+  inputNumber = '';
+  output = '';
+
   transferForm = new FormGroup({
     email: new FormControl<string>('', [Validators.required, Validators.email]),
   });
   get emailErrors(): ValidationErrors | null | undefined {
     return this.transferForm.get('email')?.errors;
+  }
+
+  onInput = (event: Event) => {
+    const value = (<HTMLInputElement>event.target).value;
+    this.inputNumber = value;
+    this.checkDigit();
+  };
+  checkDigit() {
+    if (this.inputNumber.length >= 1) {
+      const firstDigit = this.inputNumber.charAt(0);
+      switch (firstDigit) {
+        case '4':
+          this.output = 'Visa';
+          break;
+        case '5':
+          this.output = 'MasterCard';
+          break;
+        case '6':
+          this.output = 'Discover';
+          break;
+      }
+    } else {
+      this.output = 'none';
+    }
   }
 }

@@ -1,12 +1,18 @@
 <form
-  class="container box mt-6 has-background-light"
+  class="container box mt-2 has-background-light"
   [formGroup]="transferForm"
 >
   <div>
     <div>
       <label class="has-text-weight-bold"> Receiver Debit Card Number </label>
     </div>
-    <input class type="text" formControlName="cardNumber" />
+    <input
+      class
+      type="text"
+      formControlName="cardNumber"
+      (input)="onInput($event)"
+    />
+    <p class="has-text-success-dark has-text-weight-bold">{{ output }}</p>
   </div>
   <div>
     <div class="mt-4">
