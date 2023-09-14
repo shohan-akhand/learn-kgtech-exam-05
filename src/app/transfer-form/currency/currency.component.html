@@ -59,14 +59,4 @@
   <section class="card mt-6 has-text-weight-bold" *ngIf="displayResult">
     <p>Fee is: {{ getSalutation() }}</p>
   </section>
-  <!-- <section *ngIf="isScoreDisplayed" class="mt-12">
-    <p>
-      Dear {{ getSalutation() }}
-      {{ bmiForm.get('firstName')?.value + ' ' + bmiForm.get('lastName')?.value }},
-      Your BMI is {{ bmi | number }}. Your weight range is {{ weightRange }}.
-    </p>
-    <p>
-      A copy of the result will be sent to your email {{ bmiForm.get('email')?.value }}.
-    </p>
-  </section> -->
 </form>

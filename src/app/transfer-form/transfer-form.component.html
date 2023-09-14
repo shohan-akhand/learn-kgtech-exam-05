@@ -12,6 +12,9 @@
       formControlName="cardNumber"
       (input)="onInput($event)"
     />
+    <div *ngIf="transferForm.get('cardNumber')?.errors" class="has-text-danger">
+      please enter a valid card number
+    </div>
     <p class="has-text-success-dark has-text-weight-bold">{{ output }}</p>
   </div>
   <div>

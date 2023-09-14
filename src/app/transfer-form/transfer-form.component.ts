@@ -17,6 +17,10 @@ export class TransferFormComponent {
 
   transferForm = new FormGroup({
     email: new FormControl<string>('', [Validators.required, Validators.email]),
+    cardNumber: new FormControl<number>(0, [
+      Validators.pattern('^[0-9]{16}$'),
+      Validators.required,
+    ]),
   });
   get emailErrors(): ValidationErrors | null | undefined {
     return this.transferForm.get('email')?.errors;
