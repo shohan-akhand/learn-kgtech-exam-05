@@ -15,7 +15,11 @@
     <div class="column is-one-quarter">
       <label class="has-text-weight-bold"> Amount </label>
       <div>
-        <input type="number" formControlName="inputAmount" />
+        <input
+          type="number"
+          formControlName="inputAmount"
+          (input)="inputAmount($event)"
+        />
         <div
           *ngIf="currencyForm.get('inputAmount')?.errors"
           class="has-text-danger"
@@ -29,11 +33,14 @@
       <label class="has-text-weight-bold"> Currency </label>
       <div>
         <div class="select">
-          <select>
-            <option formControlName="select"></option>
-            <option>USD</option>
-            <option>EUR</option>
-            <option>CAD</option>
+          <select
+            formControlName="currencySelect"
+            (input)="currencySelect($event)"
+          >
+            <option></option>
+            <option value="usd">USD</option>
+            <option value="eur">EUR</option>
+            <option value="cad">CAD</option>
           </select>
           <div *ngIf="currencyForm.get('select')?.errors"></div>
         </div>
@@ -43,7 +50,11 @@
     <div class="column is-one-quarter">
       <label class="has-text-weight-bold">Converted Amount </label>
       <div>
-        <input type="text" />
+        <input
+          type="number"
+          formControlName="convertedAmount"
+          [value]="convertedAmount"
+        />
         <label>BDT</label>
       </div>
     </div>
@@ -57,6 +68,20 @@
   </button>
 
   <section class="card mt-6 has-text-weight-bold" *ngIf="displayResult">
-    <p>Fee is: {{ getSalutation() }}</p>
+    <p>
+      You send :
+      <span class="has-text-primary-dark">{{ convertedAmount }}</span> BDT
+    </p>
+    <p>
+      Fee is: <span class="has-text-danger-dark">{{ getTotalFee() }}</span>
+      {{ currencyName }} , (<span class="has-text-danger-dark">{{
+        feeInBDT
+      }}</span>
+      BDT)
+    </p>
+    <p>
+      Receiver gets =
+      <span class="has-text-success-dark">{{ receivedAmount }}</span> BDT
+    </p>
   </section>
 </form>
